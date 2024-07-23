@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diet Plan Generator</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #2d3546, #1d2635);
+            color: #fff;
+        }
+        /* Style for the video */
+        #background-video {
+           position: fixed;
+           right: 0;
+           bottom: 0;
+           min-width: 100%; 
+           min-height: 100%;
+           width: auto;
+           height: auto;
+           z-index: -1;
+           background-size: cover; 
+        }
+
+
+        /* Style for the video */
+    
+
+
+        h1 {
+            animation: bounce 1s ease-out;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 3em;
+            color: #66ccff;
+        }
+
+        form {
+            opacity: 0;
+            animation: slideIn 1.5s forwards;
+            width: 80%;
+            max-width: 400px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 15px;
+            color: #eee;
+            font-size: 1.2em;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            border: none;
+            border-bottom: 2px solid #4c5164;
+            background: transparent;
+            color: #eee;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        ::placeholder {
+            color: #777;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #66ccff;
+        }
+
+        select[name="physical_activity"],
+        select[name="diet_type"] {
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
+        }
+
+        select[name="physical_activity"]::after,
+        select[name="diet_type"]::after {
+            content: '\25BC';
+            position: absolute;
+            top: 50%;
+            right: 15px;
+            transform: translateY(-50%);
+            transition: transform 0.3s;
+        }
+
+        select[name="physical_activity"]:focus::after,
+        select[name="diet_type"]:focus::after {
+            transform: translateY(-50%) rotate(180deg);
+        }
+
+        button {
+            background: linear-gradient(to right, #66ccff, #007fff);
+            color: #fff;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.2em;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: linear-gradient(to right, #007fff, #66ccff);
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <video id="background-video" autoplay loop muted>
+        <source src="css/hm.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <h1>Get Your Diet!</h1>
+
+    <form action="/result" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required><br>
+
+        <label for="weight">Weight (kg):</label>
+        <input type="number" id="weight" name="weight" placeholder="Enter your weight" required><br>
+
+        <label for="height">Height (cm):</label>
+        <input type="number" id="height" name="height" placeholder="Enter your height" required><br>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" placeholder="Enter your age" required><br>
+
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select><br>
+
+        <label for="phys_act">Physical Activity Level:</label>
+        <select id="phys_act" name="phys_act" required>
+            <option value="value1">Sedentary (little or no exercise)</option>
+            <option value="value2">Lightly active (light exercise/sports 1-3 days/week)</option>
+            <option value="value3">Moderately active (moderate exercise/sports 3-5 days/week)</option>
+            <option value="value4">Very active (hard exercise/sports 6-7 days a week)</option>
+            <option value="value5">Extra active (very hard exercise/sports & physical job or 2x training)</option>
+        </select><br>
+
+        <label for="diet_plan">Diet Plan:</label>
+        <select id="diet_plan" name="diet_plan" required>
+            <option value="veg">Vegetarian</option>
+            <option value="nonveg">Non-Vegetarian</option>
+            <option value="vegan">Vegan</option>
+        </select><br>
+
+        <input type="submit" value="Generate Diet Plan">
+    </form>
+</body>
+</html>

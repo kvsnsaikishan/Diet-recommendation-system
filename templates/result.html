@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diet Plan Result</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #2d3546, #1d2635);
+            color: #fff;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 3em;
+            color: #66ccff;
+        }
+
+        table {
+            width: 80%;
+            max-width: 600px;
+            border-collapse: collapse;
+            margin-top: 20px;
+            color: #eee;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #4c5164;
+        }
+
+        th {
+            background: #333;
+            color: #66ccff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #2d3546;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #1d2635;
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ name }}'s Diet Plan</h1>
+
+    <table>
+        <tr>
+            <th>Meal/Snack</th>
+            <th>Food Items</th>
+        </tr>
+        <tr>
+            <td>Breakfast</td>
+            <td>{{ diet['breakfast'] }}</td>
+        </tr>
+        <tr>
+            <td>Snack 1</td>
+            <td>{{ diet['snack1'] }}</td>
+        </tr>
+        <tr>
+            <td>Lunch</td>
+            <td>{{ diet['lunch'] }}</td>
+        </tr>
+        <tr>
+            <td>Snack 2</td>
+            <td>{{ diet['snack2'] }}</td>
+        </tr>
+        <tr>
+            <td>Dinner</td>
+            <td>{{ diet['dinner'] }}</td>
+        </tr>
+        <tr>
+            <td>Snack 3</td>
+            <td>{{ diet['snack3'] }}</td>
+        </tr>
+    </table>
+</body>
+</html>
